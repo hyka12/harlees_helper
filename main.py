@@ -1,4 +1,5 @@
-import os, time, threading, tester, shutil
+import os, time, threading, tester, shutil, sys
+
 logo = """\033[96m
 
  /$$   /$$                     /$$                                     /$$   /$$           /$$                              
@@ -14,6 +15,20 @@ logo = """\033[96m
                                                                                               |__/                          
 """
 
+for x in range(len(sys.argv)):
+    if sys.argv[x] == "--harlee-mode":
+        logo = logo = """\033[96m
+
+             /$$   /$$                     /$$                                     
+            | $$  | $$                    | $$                                     
+            | $$  | $$  /$$$$$$   /$$$$$$ | $$  /$$$$$$   /$$$$$$         
+            | $$$$$$$$ |____  $$ /$$__  $$| $$ /$$__  $$ /$$__  $$      
+            | $$__  $$  /$$$$$$$| $$  \\__/| $$| $$$$$$$$| $$$$$$$$     
+            | $$  | $$ /$$__  $$| $$      | $$| $$_____/| $$_____/        
+            | $$  | $$|  $$$$$$$| $$      | $$|  $$$$$$$|  $$$$$$$       
+            |__/  |__/ \\_______/|__/      |__/ \\_______/ \\_______/                                                                                                                                    
+            """ 
+
 
 running=True
 current_exercise=0
@@ -25,9 +40,9 @@ reset_paths = []
 exercises = ["1_types", "2_if..else", "3_loops", "4_casts", "5_str","6_ops","7_lists","8_funcs","9_objs"] 
 
 for x in exercises:
-    exercise_paths.append(os.getcwd()+"\\exercises\\"+x+"\\test.py")
-    solution_paths.append(os.getcwd()+"\\ignore\\exercises\\"+x+"\\solution.py")
-    reset_paths.append(os.getcwd()+"\\ignore\\exercises\\"+x+"\\test.py")
+    exercise_paths.append(os.getcwd()+"/exercises/"+x+"/test.py")
+    solution_paths.append(os.getcwd()+"/ignore/exercises/"+x+"/solution.py")
+    reset_paths.append(os.getcwd()+"/ignore/exercises/"+x+"/test.py")
 
 print(logo+f"\n r:reset        n:next        q:quit        current: {exercise_paths[current_exercise]}\n")
 
